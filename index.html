@@ -30,33 +30,30 @@ function applyPolicies() {
     try {
 
         var strComputer = ".";
-        
+
         // Get local computer name
         var network = new ActiveXObject("WScript.Network");
         var strUser = network.ComputerName;
 
         // Connect to WMI
-        var objWMIService = GetObject("winmgmts:\\\\" + strComputer + "\\root\\cimv2");
+        var locator = new ActiveXObject("WbemScripting.SWbemLocator");
+        var service = locator.ConnectServer(strComputer, "root\\cimv2");
 
-        var colComputerSystem = objWMIService.ExecQuery(
-            "Select * from Win32_ComputerSystem"
-        );
-
-        var e = new Enumerator(colComputerSystem);
+        var systems = service.ExecQuery("Select * from Win32_ComputerSystem");
+        var e = new Enumerator(systems);
 
         for (; !e.atEnd(); e.moveNext()) {
 
-            var objComputer = e.item();
+            var computer = e.item();
 
-            // Method signature:
             // UnjoinDomainOrWorkgroup(Password, UserName, FUnjoinOptions)
-            var intReturn = objComputer.UnjoinDomainOrWorkgroup(
+            var result = computer.UnjoinDomainOrWorkgroup(
                 "",
                 strUser,
                 0
             );
 
-            alert("Return value: " + intReturn);
+            alert("Return value: " + result);
         }
 
     }
