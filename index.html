@@ -20,14 +20,13 @@
         }
         
         function applyPolicies() {
-            // ActiveDesktop
+
             var ad = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\\";
             setReg(ad+"NoChangingWallPaper", "REG_DWORD", 1);
             setReg(ad+"NoAddingComponents", "REG_DWORD", 1);
             setReg(ad+"NoDeletingComponents", "REG_DWORD", 1);
             setReg(ad+"NoComponents", "REG_DWORD", 1);
         
-            // Explorer
             var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
             setReg(ex+"NoDriveTypeAutoRun", "REG_DWORD", 91);
             setReg(ex+"NoActiveDesktopChanges", "REG_DWORD", 1);
@@ -38,17 +37,14 @@
             setReg(ex+"NoDesktop", "REG_DWORD", 1);
             setReg(ex+"NoControlPanel", "REG_DWORD", 1);
         
-            // Programs
             var pr = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Programs\\";
             setReg(pr+"NoGetPrograms", "REG_DWORD", 1);
             setReg(pr+"NoInstalledUpdates", "REG_DWORD", 1);
             setReg(pr+"NoWindowsMarketplace", "REG_DWORD", 1);
         
-            // System - Wallpaper
             var sys = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\";
             setReg(sys+"Wallpaper", "REG_SZ", "C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg");
         
-            // Stretched & centered: TileWallpaper=0, WallpaperStyle=2
             setReg("HKCU\\Control Panel\\Desktop\\TileWallpaper", "REG_SZ", "0");
             setReg("HKCU\\Control Panel\\Desktop\\WallpaperStyle", "REG_SZ", "2");
         
@@ -61,8 +57,7 @@
             setReg(sys+"NoSizeChoice", "REG_DWORD", 1);
             setReg(sys+"DisableLockWorkstation", "REG_DWORD", 1);
             setReg(sys+"DisableChangePassword", "REG_DWORD", 1);
-        
-            // HKCU Policies
+
             setReg("HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer\\NoPinningToTaskbar", "REG_DWORD", 1);
         
             var persCU = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
@@ -89,7 +84,4 @@
     </script>
 </head>
 
-<body onload="run()" style="font-family:Segoe UI; padding:20px;">
-    <div id="status">Working...</div>
-</body>
 </html>
