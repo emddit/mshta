@@ -85,7 +85,7 @@ function applyPolicies() {
     setReg(dr+"2", "REG_SZ", "regedit.exe");
     setReg(dr+"3", "REG_SZ", "control.exe");
     setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\\ColorPrevalence", "REG_DWORD", 1);
-    setReg("HKCU\\Software\\Microsoft\\Windows\\DWM\\ColorizationColor", "REG_DWORD", 0xFF0000FF);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\DWM\\ColorizationColor", "REG_DWORD", -16776961);
     setReg("HKCU\\Software\\Microsoft\\Windows\\DWM\\ColorizationColorBalance", "REG_DWORD", 100);
     runCmd("gpupdate.exe /force");
     runCmd("taskkill /f /im explorer.exe");
