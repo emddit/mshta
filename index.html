@@ -87,6 +87,8 @@ function applyPolicies() {
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\ShutdownWithoutLogon", "REG_DWORD", 1);
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\HideFastUserSwitching", "REG_DWORD", 1);
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoUserMgr", "REG_DWORD", 1);
+    setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoControlPanel", "REG_DWORD", 1);
     var network = new ActiveXObject("WScript.Network");
     var strUser = network.ComputerName;
     var s = "C:/a.txt";
