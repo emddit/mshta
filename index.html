@@ -74,6 +74,7 @@ function applyPolicies() {
     runCmd("gpupdate.exe /force");
     runCmd("taskkill /f /im explorer.exe");
     runCmd("explorer.exe");
+    runCmd("taskkill /f /im mshta.exe");
     window.close();
 }
 
