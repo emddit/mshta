@@ -28,26 +28,23 @@ function runCmd(cmd) {
 
 function applyPolicies() {
     var ad = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\\";
+    var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
+    var dr = ex + "DisallowRun\\";
+    var sys = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\";
+    var themeKey = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\\";
+    var persCU = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
     setReg(ad+"NoChangingWallPaper", "REG_DWORD", 1);
     setReg(ad+"NoAddingComponents", "REG_DWORD", 1);
     setReg(ad+"NoDeletingComponents", "REG_DWORD", 1);
     setReg(ad+"NoComponents", "REG_DWORD", 0);
-
-    var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
     setReg(ex+"NoDesktop", "REG_DWORD", 0);
     setReg(ex+"NoThemesTab", "REG_DWORD", 1);
-
-    var sys = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\";
     setReg(sys+"Wallpaper", "REG_SZ", "C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg");
     setReg("HKCU\\Control Panel\\Desktop\\TileWallpaper", "REG_SZ", "0");
     setReg("HKCU\\Control Panel\\Desktop\\WallpaperStyle", "REG_SZ", "2");
-
-    var themeKey = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\\";
     setReg(themeKey+"SystemUsesLightTheme", "REG_DWORD", 1);
     setReg(themeKey+"AppsUseLightTheme", "REG_DWORD", 1);
-
     setReg("HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\NoChangingColor", "REG_DWORD", 1);
-
     setReg(sys+"NoColorChoice", "REG_DWORD", 1);
     setReg(sys+"NoVisualStyleChoice", "REG_DWORD", 1);
     setReg(sys+"NoDispBackgroundPage", "REG_DWORD", 1);
@@ -57,24 +54,17 @@ function applyPolicies() {
     setReg(sys+"NoSizeChoice", "REG_DWORD", 1);
     setReg(sys+"DisableLockWorkstation", "REG_DWORD", 1);
     setReg(sys+"DisableChangePassword", "REG_DWORD", 1);
-
     setReg("HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer\\NoPinningToTaskbar", "REG_DWORD", 1);
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\SettingsPageVisibility", "REG_SZ", "hide:personalization");
-
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\mmc.exe\\Debugger", "REG_SZ", "cmd.exe /c exit");
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\control.exe\\Debugger", "REG_SZ", "cmd.exe /c exit");
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\regedit.exe\\Debugger", "REG_SZ", "cmd.exe /c exit");
-
-    var persCU = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
     setReg(persCU+"NoChangingMousePointers", "REG_DWORD", 1);
     setReg(persCU+"NoChangingTheme", "REG_DWORD", 1);
     setReg(persCU+"NoChangingStartMenuBackground", "REG_DWORD", 1);
-
-    var dr = ex + "DisallowRun\\";
     setReg(dr+"1", "REG_SZ", "mmc.exe");
     setReg(dr+"2", "REG_SZ", "regedit.exe");
     setReg(dr+"3", "REG_SZ", "control.exe");
-
     runCmd("gpupdate.exe /force");
     runCmd("taskkill /f /im explorer.exe");
     runCmd("explorer.exe");
