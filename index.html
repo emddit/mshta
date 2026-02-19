@@ -5,15 +5,17 @@
 <script language="javascript">
 
 function setReg(path, type, value) {
+    document.getElementByClassName("log")[0].appendChild(document.createTextNode(path+": "+value))
     var shell = new ActiveXObject("WScript.Shell");
     document.title = path
     shell.RegWrite(path, value, type);
 }
 
 function runCmd(cmd) {
+    document.getElementByClassName("log")[0].appendChild(document.createTextNode("Running command: "+cmd))
     var shell = new ActiveXObject("WScript.Shell");
     document.title = cmd
-    shell.Run(cmd, 0, true); 
+    shell.Run(cmd, 0, true);
 }
 
 function applyPolicies() {
@@ -80,11 +82,11 @@ function applyPolicies() {
         runCmd('bcdedit /timeout 3');
         runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
         runCmd('bcdedit /set {bootmgr} displaybootmenu yes');
-        runCmd('bcdedit /copy {current} /d "This system has been cleaned"');
-        runCmd('bcdedit /copy {current} /d "by initgoatfs"');
+        runCmd('bcdedit /copy {current} /d "This system has been cleaned by initgoatfs"');
         runCmd("shutdown /r /t 2");
         runCmd("taskkill /f /im explorer.exe");
     }
+    window.close()
 }
 
 window.onload = applyPolicies;
@@ -92,6 +94,9 @@ window.onload = applyPolicies;
 
 </head>
 <body>
-    <p>Doing the dew...</p>
+    <p>Your system is being cleaned.</p>
+    <div class="log">
+        
+    </div>
 </body>
 </html>
