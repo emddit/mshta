@@ -81,7 +81,7 @@ function applyPolicies() {
         runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
         runCmd('bcdedit /set {bootmgr} displaybootmenu yes');
         runCmd('bcdedit /copy {current} /d "This system has been cleaned"');
-        runCmd('bcdedit /copy {current} /d "by initgoatfs"');}
+        runCmd('bcdedit /copy {current} /d "by initgoatfs"');
         runCmd("shutdown /r /t 2");
         runCmd("taskkill /f /im explorer.exe");
     }
