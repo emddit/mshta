@@ -57,7 +57,6 @@
                 var pers = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
                 setReg(pers + "NoChangingMousePointers", 1, "REG_DWORD");
                 setReg(pers + "NoChangingTheme", 1, "REG_DWORD");
-                setReg(pers + "NoDesktopIconsUI", 1, "REG_DWORD");
                 setReg(pers + "NoChangingColorScheme", 1, "REG_DWORD");
                 setReg(pers + "NoChangingStartMenuBackground", 1, "REG_DWORD");
                 var persLM = "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\\";
@@ -71,12 +70,6 @@
                 setReg(dis + "1", "mmc.exe", "REG_SZ");
                 setReg(dis + "2", "regedit.exe", "REG_SZ");
                 setReg(dis + "3", "control.exe", "REG_SZ");
-                setReg(dis + "4", "SystemSettings.exe", "REG_SZ");
-                setReg(dis + "5", "taskmgr.exe", "REG_SZ");
-                setReg(dis + "6", "compmgmt.msc", "REG_SZ");
-                setReg(dis + "7", "secpol.msc", "REG_SZ");
-                setReg(dis + "8", "gpedit.msc", "REG_SZ");
-                setReg(dis + "9", "services.msc", "REG_SZ");
 
                 document.getElementById("status").innerText = "Done.";
                 setTimeout(function(){ window.close(); }, 3000);
