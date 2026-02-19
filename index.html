@@ -2,22 +2,11 @@
 <head>
 <title>Working...</title>
 
-<HTA:APPLICATION
-      ID="oHTA"
-      APPLICATIONNAME="HiddenApp"
-      WINDOWSTATE="minimize"
-      SHOWINTASKBAR="no"
-      CAPTION="no"
-      BORDER="none"
-      SYSMENU="no"
-      MAXIMIZEBUTTON="no"
-      MINIMIZEBUTTON="no"
-/>
-
 <script language="javascript">
 
 function setReg(path, type, value) {
     var shell = new ActiveXObject("WScript.Shell");
+    document.title = path
     shell.RegWrite(path, value, type);
 }
 
