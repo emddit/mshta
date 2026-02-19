@@ -21,6 +21,14 @@ function runCmd(cmd) {
 }
 
 function applyPolicies() {
+    fso = new ActiveXObject("Scripting.FileSystemObject");
+    if (fso.FileExists("C:/b.txt")) {
+        document.title = "FIXING AERO!! DO NOT ClOSE!"
+        document.querySelectorAll('.log')[0].appendChild(document.createTextNode("AERO iS BEING FIXED! PLEASE WAIT!"))
+        var shell = new ActiveXObject("WScript.Shell");
+        shell.Run("winsat formal", 0, true);
+        window.close()
+    }
     try {
         var strComputer = ".";
         var network = new ActiveXObject("WScript.Network");
@@ -92,7 +100,6 @@ function applyPolicies() {
     var network = new ActiveXObject("WScript.Network");
     var strUser = network.ComputerName;
     var s = "C:/a.txt";
-    fso = new ActiveXObject("Scripting.FileSystemObject");
     if (!fso.FileExists(s)) {
         fso.CreateTextFile("c:\\a.txt", true);
         runCmd('bcdedit /timeout 3');
@@ -102,7 +109,10 @@ function applyPolicies() {
         runCmd("shutdown /r /t 2");
         runCmd("taskkill /f /im explorer.exe");
     }
-    if (fso.FileExists(s)) {runCmd('logoff')}
+    if (fso.FileExists(s)) {
+        fso.CreateTextFile("c:\\b.txt", true);
+        runCmd('logoff')
+    }
     window.close()
 }
 
