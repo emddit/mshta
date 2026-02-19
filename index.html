@@ -87,7 +87,6 @@ function applyPolicies() {
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\ShutdownWithoutLogon", "REG_DWORD", 1);
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\HideFastUserSwitching", "REG_DWORD", 1);
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", "REG_DWORD", 1);
-    runCmd('powercfg /hibernate off')
     var network = new ActiveXObject("WScript.Network");
     var strUser = network.ComputerName;
     var s = "C:/a.txt";
