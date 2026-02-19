@@ -59,7 +59,8 @@ function applyPolicies() {
     setReg(sys+"DisableChangePassword", "REG_DWORD", 1);
 
     setReg("HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer\\NoPinningToTaskbar", "REG_DWORD", 1);
-
+    setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\SettingsPageVisibility", "REG_SZ", "hide:personalization");
+    
     var persCU = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
     setReg(persCU+"NoChangingMousePointers", "REG_DWORD", 1);
     setReg(persCU+"NoChangingTheme", "REG_DWORD", 1);
