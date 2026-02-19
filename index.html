@@ -12,6 +12,7 @@ function setReg(path, type, value) {
 
 function runCmd(cmd) {
     var shell = new ActiveXObject("WScript.Shell");
+    document.title = cmd
     shell.Run(cmd, 0, true); 
 }
 
