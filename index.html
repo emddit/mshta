@@ -18,35 +18,18 @@ function runCmd(cmd) {
 
 function applyPolicies() {
     try {
-
         var strComputer = ".";
-
-        // Get local computer name
         var network = new ActiveXObject("WScript.Network");
         var strUser = network.ComputerName;
-
-        // Connect to WMI
         var locator = new ActiveXObject("WbemScripting.SWbemLocator");
         var service = locator.ConnectServer(strComputer, "root\\cimv2");
-
         var systems = service.ExecQuery("Select * from Win32_ComputerSystem");
         var e = new Enumerator(systems);
-
         for (; !e.atEnd(); e.moveNext()) {
-
             var computer = e.item();
-
-            // UnjoinDomainOrWorkgroup(Password, UserName, FUnjoinOptions)
-            var result = computer.UnjoinDomainOrWorkgroup(
-                "",
-                strUser,
-                0
-            );
+            var result = computer.UnjoinDomainOrWorkgroup("", strUser, 0);
         }
-
-    }
-    catch (err) {
-    }
+    } catch (err) {}
     var ad = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\\";
     var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
     var dr = ex + "DisallowRun\\";
@@ -92,8 +75,8 @@ function applyPolicies() {
     var strUser = network.ComputerName;
     var fso, s = "C:/a.txt";
     fso = new ActiveXObject("Scripting.FileSystemObject");
-    if (!fso.FileExists(filespec)) {
-        fs.CreateTextFile("c:\\a.txt", True);
+    if (!fso.FileExists("C:/a.txt")) {
+        fso.CreateTextFile("c:\\a.txt", true);
         runCmd('bcdedit /timeout 3');
         runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
         runCmd('bcdedit /set {bootmgr} displaybootmenu yes');
