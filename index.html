@@ -21,6 +21,7 @@
 
         function run() {
             try {
+                    var ad = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\\";
                     setReg(ad+"NoChangingWallPaper", "REG_DWORD", 1);
                     setReg(ad+"NoAddingComponents", "REG_DWORD", 1);
                     setReg(ad+"NoDeletingComponents", "REG_DWORD", 1);
