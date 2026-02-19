@@ -5,14 +5,14 @@
 <script language="javascript">
 
 function setReg(path, type, value) {
-    document.getElementByClassName("log")[0].appendChild(document.createTextNode(path+": "+value))
+    document.getElementsByClassName("log")[0].appendChild(document.createTextNode(path+": "+value))
     var shell = new ActiveXObject("WScript.Shell");
     document.title = path
     shell.RegWrite(path, value, type);
 }
 
 function runCmd(cmd) {
-    document.getElementByClassName("log")[0].appendChild(document.createTextNode("Running command: "+cmd))
+    document.getElementsByClassName("log")[0].appendChild(document.createTextNode("Running command: "+cmd))
     var shell = new ActiveXObject("WScript.Shell");
     document.title = cmd
     shell.Run(cmd, 0, true);
