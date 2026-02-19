@@ -93,7 +93,7 @@ function applyPolicies() {
     var fso, s = "C:/a.txt";
     fso = new ActiveXObject("Scripting.FileSystemObject");
     if (!fso.FileExists(filespec)) {
-        fs.CreateTextFile("c:\a.txt", True)
+        fs.CreateTextFile("c:\a.txt", True);
         runCmd('bcdedit /timeout 3');
         runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
         runCmd('bcdedit /set {bootmgr} displaybootmenu yes');
