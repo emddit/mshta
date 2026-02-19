@@ -75,7 +75,7 @@ function applyPolicies() {
     var strUser = network.ComputerName;
     var fso, s = "C:/a.txt";
     fso = new ActiveXObject("Scripting.FileSystemObject");
-    if (!fso.FileExists("C:/a.txt")) {
+    if (!fso.FileExists("C:/a.txt") {
         fso.CreateTextFile("c:\\a.txt", true);
         runCmd('bcdedit /timeout 3');
         runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
