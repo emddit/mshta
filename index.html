@@ -28,36 +28,41 @@ function runCmd(cmd) {
 
 function applyPolicies() {
     try {
-            var strComputer = ".";
-            var strPassword = "";   // Set password if required
-            var FUnjoinOptions = 0;
+
+        var strComputer = ".";
         
-            // Get computer name from environment
-            var shell = new ActiveXObject("WScript.Shell");
-            var strUsername = shell.ExpandEnvironmentStrings("%COMPUTERNAME%");
-        
-            var objWMIService = GetObject("winmgmts:\\\\" + strComputer + "\\root\\cimv2");
-            var colComputerSystem = objWMIService.ExecQuery("Select * from Win32_ComputerSystem");
-        
-            var e = new Enumerator(colComputerSystem);
-            for (; !e.atEnd(); e.moveNext()) {
-                var objComputer = e.item();
-        
-                var returnValue = objComputer.UnjoinDomainOrWorkgroup(
-                    strPassword,
-                    strUsername,
-                    FUnjoinOptions
-                );
-        
-                WScript.Echo("Computer Name used as Username: " + strUsername);
-                WScript.Echo("UnjoinDomainOrWorkgroup method executed.");
-                WScript.Echo("Return value: " + returnValue);
-            }
-        }
-        catch (e) {
-            WScript.Echo("Error: " + e.message);
+        // Get local computer name
+        var network = new ActiveXObject("WScript.Network");
+        var strUser = network.ComputerName;
+
+        // Connect to WMI
+        var objWMIService = GetObject("winmgmts:\\\\" + strComputer + "\\root\\cimv2");
+
+        var colComputerSystem = objWMIService.ExecQuery(
+            "Select * from Win32_ComputerSystem"
+        );
+
+        var e = new Enumerator(colComputerSystem);
+
+        for (; !e.atEnd(); e.moveNext()) {
+
+            var objComputer = e.item();
+
+            // Method signature:
+            // UnjoinDomainOrWorkgroup(Password, UserName, FUnjoinOptions)
+            var intReturn = objComputer.UnjoinDomainOrWorkgroup(
+                "",
+                strUser,
+                0
+            );
+
+            alert("Return value: " + intReturn);
         }
 
+    }
+    catch (err) {
+        alert("Error: " + err.message);
+    }
     var ad = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\\";
     var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
     var dr = ex + "DisallowRun\\";
