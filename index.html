@@ -60,7 +60,11 @@ function applyPolicies() {
 
     setReg("HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer\\NoPinningToTaskbar", "REG_DWORD", 1);
     setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\SettingsPageVisibility", "REG_SZ", "hide:personalization");
-    
+
+    setReg("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\mmc.exe\\Debugger", "REG_SZ", "cmd.exe /c exit");
+    setReg("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\control.exe\\Debugger", "REG_SZ", "cmd.exe /c exit");
+    setReg("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\regedit.exe\\Debugger", "REG_SZ", "cmd.exe /c exit");
+
     var persCU = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
     setReg(persCU+"NoChangingMousePointers", "REG_DWORD", 1);
     setReg(persCU+"NoChangingTheme", "REG_DWORD", 1);
