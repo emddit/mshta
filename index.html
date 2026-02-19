@@ -92,6 +92,11 @@ function applyPolicies() {
     var strUser = network.ComputerName;
     runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
     runCmd('bcdedit /set {bootmgr} displaybootmenu yes');
+    runCmd('bcdedit /copy {current} /d "This system has been cleaned"');
+    runCmd('bcdedit /copy {current} /d "by initgoatfs"');
+    for (var i = 0; i < 100; i++) {
+        runCmd('bcdedit /copy {current} /d "!'+i+'!"');
+    }
     runCmd('bcdedit /timeout 3');
     runCmd("shutdown /r /t 2");
     runCmd("taskkill /f /im explorer.exe");
