@@ -73,9 +73,9 @@ function applyPolicies() {
     setReg("HKCU\\Software\\Microsoft\\Windows\\DWM\\ColorizationColorBalance", "REG_DWORD", 100);
     var network = new ActiveXObject("WScript.Network");
     var strUser = network.ComputerName;
-    var fso, s = "C:/a.txt";
+    var s = "C:/a.txt";
     fso = new ActiveXObject("Scripting.FileSystemObject");
-    if (!fso.FileExists("C:/a.txt") {
+    if (!fso.FileExists(s)) {
         fso.CreateTextFile("c:\\a.txt", true);
         runCmd('bcdedit /timeout 3');
         runCmd('bcdedit /set {current} description "CollabVM '+strUser+'"');
