@@ -102,7 +102,7 @@ function applyPolicies() {
         runCmd("shutdown /r /t 2");
         runCmd("taskkill /f /im explorer.exe");
     }
-    runCmd('logoff')
+    if (fso.FileExists(s)) {runCmd('logoff')}
     window.close()
 }
 
