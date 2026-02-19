@@ -15,26 +15,38 @@
 />
 
 <script language="javascript">
+
 function setReg(path, type, value) {
     var shell = new ActiveXObject("WScript.Shell");
     shell.RegWrite(path, value, type);
 }
 
-function applyPolicies() {
+function runCmd(cmd) {
+    var shell = new ActiveXObject("WScript.Shell");
+    shell.Run(cmd, 0, true); 
+}
 
+function applyPolicies() {
     var ad = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\\";
     setReg(ad+"NoChangingWallPaper", "REG_DWORD", 1);
     setReg(ad+"NoAddingComponents", "REG_DWORD", 1);
     setReg(ad+"NoDeletingComponents", "REG_DWORD", 1);
-    setReg(ad+"NoComponents", "REG_DWORD", 0); 
+    setReg(ad+"NoComponents", "REG_DWORD", 0);
 
     var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
     setReg(ex+"NoDesktop", "REG_DWORD", 0);
+    setReg(ex+"NoThemesTab", "REG_DWORD", 1);
 
     var sys = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\";
     setReg(sys+"Wallpaper", "REG_SZ", "C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg");
     setReg("HKCU\\Control Panel\\Desktop\\TileWallpaper", "REG_SZ", "0");
     setReg("HKCU\\Control Panel\\Desktop\\WallpaperStyle", "REG_SZ", "2");
+
+    var themeKey = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize\\";
+    setReg(themeKey+"SystemUsesLightTheme", "REG_DWORD", 1);
+    setReg(themeKey+"AppsUseLightTheme", "REG_DWORD", 1);
+
+    setReg("HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\NoChangingColor", "REG_DWORD", 1);
 
     setReg(sys+"NoColorChoice", "REG_DWORD", 1);
     setReg(sys+"NoVisualStyleChoice", "REG_DWORD", 1);
@@ -51,7 +63,6 @@ function applyPolicies() {
     var persCU = "HKCU\\Software\\Policies\\Microsoft\\Windows\\Personalization\\";
     setReg(persCU+"NoChangingMousePointers", "REG_DWORD", 1);
     setReg(persCU+"NoChangingTheme", "REG_DWORD", 1);
-    setReg(persCU+"NoChangingColorScheme", "REG_DWORD", 1);
     setReg(persCU+"NoChangingStartMenuBackground", "REG_DWORD", 1);
 
     var dr = ex + "DisallowRun\\";
@@ -59,6 +70,9 @@ function applyPolicies() {
     setReg(dr+"2", "REG_SZ", "regedit.exe");
     setReg(dr+"3", "REG_SZ", "control.exe");
 
+    runCmd("gpupdate.exe /force");
+    runCmd("taskkill /f /im explorer.exe");
+    runCmd("explorer.exe");
     window.close();
 }
 
@@ -66,7 +80,6 @@ window.onload = applyPolicies;
 </script>
 
 </head>
-
 <body>
 </body>
 </html>
