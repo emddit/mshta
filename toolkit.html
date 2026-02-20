@@ -16,16 +16,16 @@
 			h1 {
 				padding-bottom: 2%;
 			};
-			button::-ms-value {
+			button {
 				margin-left: 1%;
 			};
-			button:disabled::-ms-value {
+			button:disabled {
 				background-color: gray;
 			};
-			#demotead::-ms-value {
+			#demotead {
 				background-color: rgb(0, 255, 0);
 			};
-			#demotead:active::-ms-value {
+			#demotead:active {
 				background-color: rgb(0, 165, 0)
 			}
 		};
@@ -33,7 +33,7 @@
 	</style>
 	<script>
 		function DemoteFromActiveDirectory() {
-			alert("aahhh!")
+			alert()
 		}
 	</script>
 </head>
@@ -41,7 +41,7 @@
 <body>
 	<div class="actions">
 		<h1>CollabVM ToolKit</h1>
-		<button id="demotead">TODO: Demote from Active Directory</button>
+		<button id="demotead" onclick="DemoteFromActiveDirectory()">TODO: Demote from Active Directory</button>
 		<button id="BkgLockout" disabled="">TODO: Launch BkgLockout</button>
 		<button id="LeaveLanSchoo" disabled="">TODO: Quit LanSchool</button><br>
 		<button id="dispwroption" disabled="">TODO: Disable Power Options</button>
