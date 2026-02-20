@@ -2,30 +2,44 @@
 <html>
 <script>
 
+function window_onload() {
+    if (!IsAdmin()) {
+        Elevate();
+    } else {
+        checkdomain()
+    }
+}
 
-	function RunAsAdmin() {
+function IsAdmin() {
+    try {
+        var shell = new ActiveXObject("WScript.Shell");
+        var exec = shell.Exec("whoami /groups");
+        var output = exec.StdOut.ReadAll();
 
-		var args = location.search;
+        if (output.indexOf("S-1-16-12288") !== -1) {
+            return true;
+        }
+    } catch (e) {}
 
-		if (args.toLowerCase().indexOf("runasadministrator") !== -1)
-			return;
+    return false;
+}
 
-		var shell = new ActiveXObject("Shell.Application");
-		var fullPath = document.location.href;
-		fullPath = fullPath.replace("file:///", "");
-		fullPath = unescape(fullPath);
-		alert("Executing mshta " + '"' + fullPath + '?RunAsAdministrator"')
-		shell.ShellExecute(
-			"mshta.exe",
-			'"' + fullPath + '"?RunAsAdministrator',
-			"",
-			"runas",
-			1
-		);
+function Elevate() {
+    var shellApp = new ActiveXObject("Shell.Application");
+    var fullPath = document.location.href;
+    fullPath = unescape(fullPath);
+	alert("mshta.exe " + '"' + fullPath + '"')
+    shellApp.ShellExecute(
+        "mshta.exe",
+        '"' + fullPath + '"',
+        "",
+        "runas",
+        1
+    );
 
-		window.close();
-	}
-	RunAsAdmin()
+    window.close();
+}
+window.onload = window_onload
 </script>
 
 <head>
