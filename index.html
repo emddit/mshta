@@ -13,7 +13,7 @@ function window_onload() {
 function IsAdmin() {
     try {
         var shell = new ActiveXObject("WScript.Shell");
-        shell.RegRead("HKU\\S-1-5-19\\Environment\\TEMP");
+        shell.RegRead("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\HibernateEnabled");
         return true;
     } catch (e) {
         return false;
