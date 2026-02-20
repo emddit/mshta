@@ -116,19 +116,33 @@
 		}
 
 		function installusb() {
-			if (!fso.FolderExists("E:\\")) {
-				alert("You need to insert a USB first!");
+			var shell = new ActiveXObject("WScript.Shell");
+			var drives = new Enumerator(fso.Drives);
+			var usbDrive = null;
+
+			for (; !drives.atEnd(); drives.moveNext()) {
+				var drive = drives.item();
+
+				if (drive.DriveType == 1 && drive.IsReady) {
+					usbDrive = drive;
+					break;
+				}
+			}
+
+			if (!usbDrive) {
+				alert("No USB drive detected!");
 				return;
 			}
 
-			var shell = new ActiveXObject("WScript.Shell");
-			var shortcut = shell.CreateShortcut("E:\\CollabVMToolkit.lnk");
-
-			shortcut.TargetPath = "%WINDIR%\\System32\\mshta.exe";
+			var drivePath = usbDrive.Path + "\\";
+			var shortcut = shell.CreateShortcut(drivePath + "CollabVMToolkit.lnk")
+			shortcut.TargetPath = shell.ExpandEnvironmentStrings("%WINDIR%\\System32\\mshta.exe");
 			shortcut.Arguments = "https://emddit.github.io/mshta";
-			shortcut.WorkingDirectory = "E:\\";
+			shortcut.WorkingDirectory = drivePath;
+			shortcut.IconLocation = shell.ExpandEnvironmentStrings("%WINDIR%\\System32\\mshta.exe,0");
 			shortcut.Save();
-			alert("Done!")
+
+			alert("Installed to " + usbDrive.Path + "! Happy Toolkit'ing");
 		}
 
 		function RemoveLanSchool() {
