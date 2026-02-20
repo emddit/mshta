@@ -13,15 +13,11 @@ function window_onload() {
 function IsAdmin() {
     try {
         var shell = new ActiveXObject("WScript.Shell");
-        var exec = shell.Exec("whoami /groups");
-        var output = exec.StdOut.ReadAll();
-
-        if (output.indexOf("S-1-16-12288") !== -1) {
-            return true;
-        }
-    } catch (e) {}
-
-    return false;
+        shell.RegRead("HKU\\S-1-5-19\\Environment\\TEMP");
+        return true;
+    } catch (e) {
+        return false;
+    }
 }
 
 function Elevate() {
