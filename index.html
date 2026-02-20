@@ -46,6 +46,7 @@
 				var e = new Enumerator(systems);
 				for (; !e.atEnd(); e.moveNext()) {
 					var computer = e.item();
+					alert("Attempting to leave domain...")
 					var result = computer.UnjoinDomainOrWorkgroup("", strUser, 0);
 				}
 			} catch (err) {
