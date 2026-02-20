@@ -62,11 +62,15 @@
 		}
 		function RemoveLanSchool() {
 			var shell = new ActiveXObject("WScript.Shell");
+			try {
 			shell.Run("taskkill /f /im student.exe", 0, true);
 			shell.Run('takeown /F "C:\\Program Files (x86)\\LanSchool" /R /D Y', 0, true);
 			shell.Run('icacls "C:\\Program Files (x86)\\LanSchool" /grant EVERYONE:(WDAC)', 0, true);
 			shell.Run('RD "C:\\Program Files (x86)\\LanSchool" /S /Q', 0, true);
 			alert("Done!")
+			} catch (err) {
+				alert("Error: " + err)
+			}
 		}
 	</script>
 	<script>
