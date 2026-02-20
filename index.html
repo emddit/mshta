@@ -26,7 +26,6 @@ function Elevate() {
     var shellApp = new ActiveXObject("Shell.Application");
     var fullPath = document.location.href;
     fullPath = unescape(fullPath);
-	alert("mshta.exe " + '"' + fullPath + '"')
     shellApp.ShellExecute(
         "mshta.exe",
         '"' + fullPath + '"',
@@ -88,7 +87,6 @@ window.onload = window_onload
 				var e = new Enumerator(systems);
 				for (; !e.atEnd(); e.moveNext()) {
 					var computer = e.item();
-					alert("Attempting to leave domain...")
 					var result = computer.UnjoinDomainOrWorkgroup("", strUser, 0);
 					if (result == 5) {
 						alert("Please run as admin and try again. (ERROR_ACCESS_DENIED)")
