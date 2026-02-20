@@ -48,7 +48,13 @@
 					var computer = e.item();
 					alert("Attempting to leave domain...")
 					var result = computer.UnjoinDomainOrWorkgroup("", strUser, 0);
-					alert("Has code: "+result)
+					if (result == 5) {
+						alert("Was never in domain!")
+					} else if (result == 0) {
+						alert("Left domain! Please logout to continue!")
+					} else {
+						alert("Error: "+result)
+					}
 				}
 			} catch (err) {
 				alert(err)
