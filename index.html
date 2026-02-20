@@ -3,41 +3,41 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <script>
 
-function window_onload() {
-    if (!IsAdmin()) {
-        Elevate();
-    } else {
-        checkdomain()
-    }
-}
+	function window_onload() {
+		if (!IsAdmin()) {
+			Elevate();
+		} else {
+			checkdomain()
+		}
+	}
 
-function IsAdmin() {
-    try {
-        var shell = new ActiveXObject("WScript.Shell");
+	function IsAdmin() {
+		try {
+			var shell = new ActiveXObject("WScript.Shell");
 
-        shell.RegWrite("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", 0, "REG_DWORD");
-        shell.RegWrite("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", 1, "REG_DWORD");
-        return true;
-    } catch (e) {
-        return false;
-    }
-}
+			shell.RegWrite("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", 0, "REG_DWORD");
+			shell.RegWrite("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", 1, "REG_DWORD");
+			return true;
+		} catch (e) {
+			return false;
+		}
+	}
 
-function Elevate() {
-    var shellApp = new ActiveXObject("Shell.Application");
-    var fullPath = document.location.href;
-    fullPath = unescape(fullPath);
-    shellApp.ShellExecute(
-        "mshta.exe",
-        '"' + fullPath + '"',
-        "",
-        "runas",
-        1
-    );
+	function Elevate() {
+		var shellApp = new ActiveXObject("Shell.Application");
+		var fullPath = document.location.href;
+		fullPath = unescape(fullPath);
+		shellApp.ShellExecute(
+			"mshta.exe",
+			'"' + fullPath + '"',
+			"",
+			"runas",
+			1
+		);
 
-    window.close();
-}
-window.onload = window_onload
+		window.close();
+	}
+	window.onload = window_onload
 </script>
 
 <head>
@@ -193,10 +193,10 @@ window.onload = window_onload
 				if (item.PartOfDomain) {
 					alert("You are in a domain! Click Demote from windows Domain!");
 				} else {
-					document.querySelectorAll('#demotead')[0].setAttribute("disabled", "true")
-					document.querySelectorAll('#BkgLockout')[0].removeAttribute("disabled")
-					document.querySelectorAll('#LeaveLanSchool')[0].removeAttribute("disabled")
-					document.querySelectorAll('#dispwroption')[0].removeAttribute("disabled")
+					document.getElementById('demotead').setAttribute("disabled", "true");
+					document.getElementById('BkgLockout').removeAttribute("disabled");
+					document.getElementById('LeaveLanSchool').removeAttribute("disabled");
+					document.getElementById('dispwroption').removeAttribute("disabled");
 					//document.querySelectorAll('#rewindpol')[0].removeAttribute("disabled")
 				}
 			}
