@@ -13,7 +13,9 @@ function window_onload() {
 function IsAdmin() {
     try {
         var shell = new ActiveXObject("WScript.Shell");
-        shell.RegRead("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\HibernateEnabled");
+
+        shell.RegWrite("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", 0, "REG_DWORD");
+        shell.RegWrite("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", 1, "REG_DWORD");
         return true;
     } catch (e) {
         return false;
