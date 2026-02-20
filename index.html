@@ -48,6 +48,7 @@
 					var computer = e.item();
 					alert("Attempting to leave domain...")
 					var result = computer.UnjoinDomainOrWorkgroup("", strUser, 0);
+					alert("Has code: "+result)
 				}
 			} catch (err) {
 				alert(err)
