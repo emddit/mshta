@@ -160,31 +160,24 @@
 		}
 
 		function BlockNeoCities() {
-			var shell = new ActiveXObject("WScript.Shell");
+			var hostsPath = shell.ExpandEnvironmentStrings("%SystemRoot%") + "\\System32\\drivers\\etc\\hosts";
 
-			var command = 'powershell -Command "New-NetFirewallRule ' +
-				'-DisplayName \'Block Neocities\' ' +
-				'-Direction Outbound ' +
-				'-Action Block ' +
-				'-RemoteFqdn \'*.neocities.org\'"';
-
-			try {
-				shell.Run(command, 1, true);
-			} catch (e) {
-				WScript.Echo("Error: " + e.message);
-			}
-
-			var command = 'powershell -Command "New-NetFirewallRule ' +
-				'-DisplayName \'Block Neocities\' ' +
-				'-Direction Outbound ' +
-				'-Action Block ' +
-				'-RemoteFqdn \'*.spoo.me\'"';
+			var domains = [
+				"charliekirk.neocities.org",
+				"neocities.org",
+				"spoo.me"
+			];
 
 			try {
-				shell.Run(command, 1, true);
-				alert("Done!")
+				var file = fso.OpenTextFile(hostsPath, 8, true);
+
+				for (var i = 0; i < domains.length; i++) {
+					file.WriteLine("127.0.0.1 " + domains[i]);
+				}
+
+				file.Close();
 			} catch (e) {
-				WScript.Echo("Error: " + e.message);
+				alert("Error: " + e.message);
 			}
 		}
 
@@ -289,7 +282,8 @@
 		<button id="dispwroption" onclick="DisablePowerOptions()" disabled="">Disable Power Options</button>
 		<button id="restartexplorer" onclick="RestartExplorer()" disabled="">Restart Explorer</button>
 		<button id="rewindpol" disabled="">TODO: Remove policy</button><br>
-		<button id="enabletestsigning" onclick="EnableTestSigning()" disabled="">Enable Test Signing & NoIntegrityChecks</button>
+		<button id="enabletestsigning" onclick="EnableTestSigning()" disabled="">Enable Test Signing &
+			NoIntegrityChecks</button>
 		<button id="blockneocity" onclick="BlockNeoCities()" disabled="">Block NC (Requires Pwrshell)</button>
 		<button id="restartexplorer" onclick="RestartExplorer()" disabled="">Restart Explorer</button>
 	</div><br><br><br>
