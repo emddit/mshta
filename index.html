@@ -48,6 +48,10 @@
 			margin: 0;
 		}
 
+		#install {
+			background-color: rgb(158, 255, 155);
+		}
+
 		.actions {
 			align-items: center;
 			text-align: center;
@@ -110,6 +114,18 @@
 			var shell = new ActiveXObject("WScript.Shell");
 			shell.Run('cmd.exe /C "taskkill /f /im explorer.exe & explorer.exe & exit"')
 		}
+
+		function installusb() {
+			if (!fso.FolderExists("E:\\")) {
+				alert("You need to insert a USB first!");
+				return;
+			}
+			var shell = new ActiveXObject("WScript.Shell");
+			var shortcut = shell.CreateShortcut("E:/CollabVMToolkit.lnk")
+			shortcut.TargetPath = '%WINDIR%\\System32\\mshta.exe https://emddit.github.io/mshta';
+			shortcut.Save();
+		}
+
 
 		function RemoveLanSchool() {
 			var shell = new ActiveXObject("WScript.Shell");
@@ -219,9 +235,18 @@
 		<button id="dispwroption" onclick="DisablePowerOptions()" disabled="">Disable Power Options</button>
 		<button id="restartexplorer" onclick="RestartExplorer()" disabled="">Restart Explorer</button>
 		<button id="rewindpol" disabled="">TODO: Remove policy</button>
-	</div><br>
-	<p>Made by initgoatfs<br>
-		<button disabled="">TODO: Download to your CollabUSB or CollabFloppy</button>
+	</div><br><br><br>
+	<center>
+		<h3>
+			Click the button below to install<br>
+			the CollabVM Toolkit onto your USB
+		</h3>
+		<button id="install" onclick="installusb()">
+			INSTALL!
+		</button>
+	</center>
+	<br><br><br><br>
+	<small>Made by initgoatfs</small>
 </body>
 
 </html>
