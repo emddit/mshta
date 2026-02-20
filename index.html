@@ -2,27 +2,32 @@
 <html>
 <script>
 
-function RunAsAdmin() {
-    var args = location.search;
 
-    if (args.toLowerCase().indexOf("runasadministrator") === -1) {
+	function RunAsAdmin() {
 
-        var shell = new ActiveXObject("Shell.Application");
-		alert("Elevating... to mshta " + '"' + document.location.pathname + '"?RunAsAdministrator')
-        shell.ShellExecute(
-            "mshta.exe",
-            '"' + document.location.pathname + '"?RunAsAdministrator',
-            "",
-            "runas",
-            1
-        );
+		var args = location.search;
 
-        window.close();
-    }
-}
+		if (args.toLowerCase().indexOf("runasadministrator") !== -1)
+			return;
 
-RunAsAdmin()
+		var shell = new ActiveXObject("Shell.Application");
+		var fullPath = document.location.href;
+		fullPath = fullPath.replace("file:///", "");
+		fullPath = unescape(fullPath);
+		alert("Executing mshta " + '"' + fullPath + '"?RunAsAdministrator')
+		shell.ShellExecute(
+			"mshta.exe",
+			'"' + fullPath + '"?RunAsAdministrator',
+			"",
+			"runas",
+			1
+		);
+
+		window.close();
+	}
+	RunAsAdmin()
 </script>
+
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>CollabVM Toolkit (Online)</title>
