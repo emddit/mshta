@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>CollabVM Toolkit (Online)</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>CollabVM Toolkit (Online)</title>
+	<style>
+		* {
+			margin: 0;
+		}
+		.actions {
+			align-items: center;
+			text-align: center;
+			background-color: rgb(158, 255, 155);
+			padding-bottom: 2.5%;
+			padding-top: 2.5%;
+			h1 {
+				padding-bottom: 2%;
+			};
+			button {
+				margin-left: 1%;
+			};
+			button:disabled {
+				background-color: gray;
+			};
+			#demotead {
+				background-color: rgb(0, 255, 0);
+			};
+			#demotead:active {
+				background-color: rgb(0, 165, 0)
+			}
+		};
+		
+	</style>
+	<script>
+		function DemoteFromActiveDirectory() {
+			alert("aahhh!")
+		}
+	</script>
 </head>
+
 <body>
-  <center><h1>CollabVM ToolKit</h1>
-  <button>TODO: Demote from Active Directory</button>
-  <button>TODO: Launch BkgLockout</button>
-  <button>TODO: Disable Power Options</button>
-  <button>TODO: Remove policy</button></center><br>
-  <p>Made by </p><bold>initgoatfs</bold><br>
-  <button>TODO: Download to your CollabUSB or CollabFloppy</button>
+	<div class="actions">
+		<h1>CollabVM ToolKit</h1>
+		<button id="demotead">TODO: Demote from Active Directory</button>
+		<button id="BkgLockout" disabled="">TODO: Launch BkgLockout</button>
+		<button id="LeaveLanSchoo" disabled="">TODO: Quit LanSchool</button><br>
+		<button id="dispwroption" disabled="">TODO: Disable Power Options</button>
+		<button id="rewindpol" disabled="">TODO: Remove policy</button>
+	</div><br>
+	<p>Made by initgoatfs<br>
+	<button>TODO: Download to your CollabUSB or CollabFloppy</button>
 </body>
+
 </html>
