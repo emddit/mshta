@@ -55,7 +55,7 @@
 					} else if (result == 2695) {
 						alert("Big error please reboot (NERR_InvalidWorkgroupName)")
 					} else {
-						alert("Error: "+result)
+						alert("Error: " + result)
 					}
 				}
 			} catch (err) {
@@ -64,20 +64,26 @@
 		}
 	</script>
 	<script>
-		// CheckDomain.js
-		var locator = new ActiveXObject("WbemScripting.SWbemLocator"); // create WMI locator
-		var service = locator.ConnectServer(".", "root\\cimv2");       // connect to local WMI namespace
+		function checkdomain() {
+			var locator = new ActiveXObject("WbemScripting.SWbemLocator"); // create WMI locator
+			var service = locator.ConnectServer(".", "root\\cimv2");       // connect to local WMI namespace
 
-		var query = "SELECT PartOfDomain, Domain FROM Win32_ComputerSystem";
-		var colItems = service.ExecQuery(query);
+			var query = "SELECT PartOfDomain, Domain FROM Win32_ComputerSystem";
+			var colItems = service.ExecQuery(query);
 
-		var e = new Enumerator(colItems);
-		for (; !e.atEnd(); e.moveNext()) {
-			var item = e.item();
-			if (item.PartOfDomain) {
-				alert(item.Domain);
-			} else {
-				alert("Not in domain!");
+			var e = new Enumerator(colItems);
+			for (; !e.atEnd(); e.moveNext()) {
+				var item = e.item();
+				if (item.PartOfDomain) {
+					alert("You are in a domain! Click Demote from windows Domain!");
+				} else {
+					document.querySelectorAll('#demotead')[0].hidden = true
+					document.querySelectorAll('#BkgLockout')[0].disabled = false
+					document.querySelectorAll('#LeaveLanSchool')[0].disabled = false
+					document.querySelectorAll('#dispwroption')[0].disabled = false
+					document.querySelectorAll('#rewindpol')[0].disabled = false
+					
+				}
 			}
 		}
 	</script>
@@ -86,9 +92,9 @@
 <body>
 	<div class="actions">
 		<h1>CollabVM ToolKit</h1>
-		<button id="demotead" onclick="DemoteFromActiveDirectory()">TODO: Demote from Windows Domain</button>
+		<button id="demotead" onclick="DemoteFromActiveDirectory()">Demote from Windows Domain</button>
 		<button id="BkgLockout" disabled="">TODO: Launch BkgLockout</button>
-		<button id="LeaveLanSchoo" disabled="">TODO: Quit LanSchool</button><br>
+		<button id="LeaveLanSchool" disabled="">TODO: Quit LanSchool</button><br>
 		<button id="dispwroption" disabled="">TODO: Disable Power Options</button>
 		<button id="rewindpol" disabled="">TODO: Remove policy</button>
 	</div><br>
