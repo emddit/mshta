@@ -108,7 +108,7 @@
 
 		function RestartExplorer() {
 			var shell = new ActiveXObject("WScript.Shell");
-			shell.Run('cmd.exe /C "taskkill /f /im explorer.exe & explorer.exe"')
+			shell.Run('cmd.exe /C "taskkill /f /im explorer.exe & explorer.exe & exit"', 0, true)
 		}
 
 		function RemoveLanSchool() {
