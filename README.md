@@ -1,8 +1,9 @@
-# CollabVM Tooling
+# CollabVM Toolkit
 
-This repo contains tools for CollabVM.
+This Repo has a lot of interesting tools for collabvm
 
-To use this repo: (As admin)
+# HowToUse
+
 ```
 mshta https://emddit.github.io/mshta
 ```
