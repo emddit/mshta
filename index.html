@@ -72,6 +72,8 @@
 		;
 	</style>
 	<script>
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+
 		function setReg(path, type, value) {
 			var shell = new ActiveXObject("WScript.Shell");
 			shell.RegWrite(path, value, type);
@@ -103,14 +105,16 @@
 				alert(err)
 			}
 		}
+
 		function RemoveLanSchool() {
 			var shell = new ActiveXObject("WScript.Shell");
 			shell.Run("taskkill /f /im student.exe", 0, true);
 			shell.Run('takeown /F "C:\\Program Files (x86)\\LanSchool" /R /D Y', 0, true);
 			shell.Run('icacls "C:\\Program Files (x86)\\LanSchool" /grant EVERYONE:(WDAC)', 0, true);
-			shell.Run('RD "C:\\Program Files (x86)\\LanSchool" /S /Q', 0, true);
+			fso.DeleteFolder("C:\\Program Files (x86)\\LanSchool", true);
 			alert("Done!")
 		}
+
 		function extradisable() {
 			var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
 			var dr = ex + "DisallowRun\\";
@@ -191,7 +195,7 @@
 				} else {
 					document.getElementById('demotead').setAttribute("disabled", "true");
 					document.getElementById('BkgLockout').removeAttribute("disabled");
-					document.getElementById('LeaveLanSchool').removeAttribute("disabled");
+					if (!fso.FolderExists("C:\\Program Files (x86)\\LanSchool")) document.getElementById('LeaveLanSchool').removeAttribute("disabled");
 					document.getElementById('dispwroption').removeAttribute("disabled");
 					//document.querySelectorAll('#rewindpol')[0].removeAttribute("disabled")
 				}
