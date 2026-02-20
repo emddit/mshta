@@ -14,7 +14,7 @@
 		var fullPath = document.location.href;
 		fullPath = fullPath.replace("file:///", "");
 		fullPath = unescape(fullPath);
-		alert("Executing mshta " + '"' + fullPath + '"?RunAsAdministrator')
+		alert("Executing mshta " + '"' + fullPath + '?RunAsAdministrator"')
 		shell.ShellExecute(
 			"mshta.exe",
 			'"' + fullPath + '"?RunAsAdministrator',
