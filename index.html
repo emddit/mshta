@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html>
+<script>
 
+function RunAsAdmin() {
+    var cmdLine = window.external.commandLine;
+
+    // Check if already relaunched as admin
+    if (cmdLine.toLowerCase().indexOf("runasadministrator") === -1) {
+        var shell = new ActiveXObject("Shell.Application");
+
+        // Relaunch itself elevated
+        shell.ShellExecute(
+            "mshta.exe",
+            '"' + document.location.pathname + '" RunAsAdministrator',
+            "",
+            "runas",
+            1
+        );
+
+        window.close();
+    }
+}
+
+RunAsAdmin()
+</script>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>CollabVM Toolkit (Online)</title>
