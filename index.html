@@ -3,16 +3,15 @@
 <script>
 
 function RunAsAdmin() {
-    var cmdLine = window.external.commandLine;
+    var args = location.search;
 
-    // Check if already relaunched as admin
-    if (cmdLine.toLowerCase().indexOf("runasadministrator") === -1) {
+    if (args.toLowerCase().indexOf("runasadministrator") === -1) {
+
         var shell = new ActiveXObject("Shell.Application");
 
-        // Relaunch itself elevated
         shell.ShellExecute(
             "mshta.exe",
-            '"' + document.location.pathname + '" RunAsAdministrator',
+            '"' + document.location.pathname + '"?RunAsAdministrator',
             "",
             "runas",
             1
