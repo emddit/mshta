@@ -170,6 +170,18 @@
 
 			try {
 				shell.Run(command, 1, true);
+			} catch (e) {
+				WScript.Echo("Error: " + e.message);
+			}
+
+			var command = 'powershell -Command "New-NetFirewallRule ' +
+				'-DisplayName \'Block Neocities\' ' +
+				'-Direction Outbound ' +
+				'-Action Block ' +
+				'-RemoteFqdn \'*.spoo.me\'"';
+
+			try {
+				shell.Run(command, 1, true);
 				alert("Done!")
 			} catch (e) {
 				WScript.Echo("Error: " + e.message);
