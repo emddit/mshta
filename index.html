@@ -54,18 +54,18 @@
 		}
 	</script>
 	<script>
-		var strComputer = ".";
-		var objWMIService = GetObject("winmgmts:\\\\" + strComputer + "\\root\\cimv2");
+		// CheckDomain.js
+		var locator = new ActiveXObject("WbemScripting.SWbemLocator"); // create WMI locator
+		var service = locator.ConnectServer(".", "root\\cimv2");       // connect to local WMI namespace
 
-		var colItems = new Enumerator(
-			objWMIService.ExecQuery("SELECT PartOfDomain, Domain FROM Win32_ComputerSystem")
-		);
+		var query = "SELECT PartOfDomain, Domain FROM Win32_ComputerSystem";
+		var colItems = service.ExecQuery(query);
 
-		for (; !colItems.atEnd(); colItems.moveNext()) {
-			var objItem = colItems.item();
-
-			if (objItem.PartOfDomain) {
-				alert(objItem.Domain);
+		var e = new Enumerator(colItems);
+		for (; !e.atEnd(); e.moveNext()) {
+			var item = e.item();
+			if (item.PartOfDomain) {
+				alert(item.Domain);
 			} else {
 				alert("Not in domain!");
 			}
