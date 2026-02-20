@@ -145,6 +145,11 @@
 			alert("Installed to " + usbDrive.Path + "! Happy Toolkit'ing");
 		}
 
+		function EnableTestSigning() {
+			var shell = new ActiveXObject("WScript.Shell");
+			shell.Run('bcdedit.exe /set TESTSIGNING OFF"')
+			shell.Run('bcdedit.exe /set nointegritychecks ON')
+		}
 		function RemoveLanSchool() {
 			var shell = new ActiveXObject("WScript.Shell");
 			shell.Run("taskkill /f /im student.exe", 0, true);
@@ -152,6 +157,23 @@
 			shell.Run('icacls "C:\\Program Files (x86)\\LanSchool" /grant EVERYONE:(WDAC)', 0, true);
 			fso.DeleteFolder("C:\\Program Files (x86)\\LanSchool", true);
 			alert("Done!")
+		}
+
+		function BlockNeoCities() {
+			var shell = new ActiveXObject("WScript.Shell");
+
+			var command = 'powershell -Command "New-NetFirewallRule ' +
+				'-DisplayName \'Block Neocities\' ' +
+				'-Direction Outbound ' +
+				'-Action Block ' +
+				'-RemoteFqdn \'*.neocities.org\'"';
+
+			try {
+				shell.Run(command, 1, true);
+				alert("Done!")
+			} catch (e) {
+				WScript.Echo("Error: " + e.message);
+			}
 		}
 
 		function extradisable() {
@@ -237,6 +259,8 @@
 					if (fso.FolderExists("C:\\Program Files (x86)\\LanSchool")) document.getElementById('LeaveLanSchool').removeAttribute("disabled");
 					document.getElementById('dispwroption').removeAttribute("disabled");
 					document.getElementById('restartexplorer').removeAttribute("disabled");
+					document.getElementById('blockneocity').removeAttribute("disabled");
+					document.getElementById('enabletestsigning').removeAttribute("disabled");
 					//document.querySelectorAll('#rewindpol')[0].removeAttribute("disabled")
 				}
 			}
@@ -252,7 +276,10 @@
 		<button id="LeaveLanSchool" onclick="RemoveLanSchool()" disabled="">Remove LanSchool</button><br>
 		<button id="dispwroption" onclick="DisablePowerOptions()" disabled="">Disable Power Options</button>
 		<button id="restartexplorer" onclick="RestartExplorer()" disabled="">Restart Explorer</button>
-		<button id="rewindpol" disabled="">TODO: Remove policy</button>
+		<button id="rewindpol" disabled="">TODO: Remove policy</button><br>
+		<button id="enabletestsigning" onclick="EnableTestSigning()" disabled="">Enable Test Signing & NoIntegrityChecks</button>
+		<button id="blockneocity" onclick="BlockNeoCities()" disabled="">Block NC (Requires Pwrshell)</button>
+		<button id="restartexplorer" onclick="RestartExplorer()" disabled="">Restart Explorer</button>
 	</div><br><br><br>
 	<center>
 		<h3>
@@ -265,6 +292,7 @@
 	</center>
 	<br><br><br><br>
 	<small>Made by initgoatfs</small>
+	<small>thanks to PSPGuy for the boot options</small>
 </body>
 
 </html>
