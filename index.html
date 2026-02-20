@@ -160,6 +160,7 @@
 		}
 
 		function BlockNeoCities() {
+			var shell = new ActiveXObject("WScript.Shell");
 			var hostsPath = shell.ExpandEnvironmentStrings("%SystemRoot%") + "\\System32\\drivers\\etc\\hosts";
 
 			var domains = [
