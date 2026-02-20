@@ -49,9 +49,11 @@
 					alert("Attempting to leave domain...")
 					var result = computer.UnjoinDomainOrWorkgroup("", strUser, 0);
 					if (result == 5) {
-						alert("Was never in domain!")
+						alert("Please run as admin and try again. (ERROR_ACCESS_DENIED)")
 					} else if (result == 0) {
 						alert("Left domain! Please logout to continue!")
+					} else if (result == 2695) {
+						alert("Big error please reboot (NERR_InvalidWorkgroupName)")
 					} else {
 						alert("Error: "+result)
 					}
