@@ -20,8 +20,6 @@
 				padding-bottom: 2%;
 			}
 
-			;
-
 			button {
 				margin-left: 1%;
 			}
@@ -62,6 +60,14 @@
 				alert(err)
 			}
 		}
+		function RemoveLanSchool() {
+			var shell = new ActiveXObject("WScript.Shell");
+			shell.Run("taskkill /f /im student.exe", 0, true);
+			shell.Run('takeown /F "C:\\Program Files (x86)\\LanSchool" /R /D Y', 0, true);
+			shell.Run('icacls "C:\\Program Files (x86)\\LanSchool" /grant EVERYONE:(WDAC)', 0, true);
+			shell.Run('RD "C:\\Program Files (x86)\\LanSchool" /S /Q', 0, true);
+			alert("Done!")
+		}
 	</script>
 	<script>
 		function checkdomain() {
@@ -78,10 +84,10 @@
 					alert("You are in a domain! Click Demote from windows Domain!");
 				} else {
 					document.querySelectorAll('#demotead')[0].setAttribute("disabled", "true")
-					document.querySelectorAll('#BkgLockout')[0].removeAttribute("disabled")
+					//document.querySelectorAll('#BkgLockout')[0].removeAttribute("disabled")
 					document.querySelectorAll('#LeaveLanSchool')[0].removeAttribute("disabled")
-					document.querySelectorAll('#dispwroption')[0].removeAttribute("disabled")
-					document.querySelectorAll('#rewindpol')[0].removeAttribute("disabled")
+					//document.querySelectorAll('#dispwroption')[0].removeAttribute("disabled")
+					//document.querySelectorAll('#rewindpol')[0].removeAttribute("disabled")
 				}
 			}
 		}
@@ -94,7 +100,7 @@
 		<h1>CollabVM ToolKit</h1>
 		<button id="demotead" onclick="DemoteFromActiveDirectory()">Demote from Windows Domain</button>
 		<button id="BkgLockout" disabled="">TODO: Launch BkgLockout</button>
-		<button id="LeaveLanSchool" disabled="">TODO: Quit LanSchool</button><br>
+		<button id="LeaveLanSchool" onclick="RemoveLanSchool()" disabled="">Remove LanSchool</button><br>
 		<button id="dispwroption" disabled="">TODO: Disable Power Options</button>
 		<button id="rewindpol" disabled="">TODO: Remove policy</button>
 	</div><br>
