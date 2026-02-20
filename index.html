@@ -8,7 +8,7 @@ function RunAsAdmin() {
     if (args.toLowerCase().indexOf("runasadministrator") === -1) {
 
         var shell = new ActiveXObject("Shell.Application");
-
+		alert("Elevating...")
         shell.ShellExecute(
             "mshta.exe",
             '"' + document.location.pathname + '"?RunAsAdministrator',
