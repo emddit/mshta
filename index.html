@@ -77,11 +77,11 @@
 				if (item.PartOfDomain) {
 					alert("You are in a domain! Click Demote from windows Domain!");
 				} else {
-					document.querySelectorAll('#demotead')[0].hidden = true
-					document.querySelectorAll('#BkgLockout')[0].disabled = false
-					document.querySelectorAll('#LeaveLanSchool')[0].disabled = false
-					document.querySelectorAll('#dispwroption')[0].disabled = false
-					document.querySelectorAll('#rewindpol')[0].disabled = false
+					document.querySelectorAll('#demotead')[0].remove()
+					document.querySelectorAll('#BkgLockout')[0].removeAttribute("disabled")
+					document.querySelectorAll('#LeaveLanSchool')[0].removeAttribute("disabled")
+					document.querySelectorAll('#dispwroption')[0].removeAttribute("disabled")
+					document.querySelectorAll('#rewindpol')[0].removeAttribute("disabled")
 					
 				}
 			}
