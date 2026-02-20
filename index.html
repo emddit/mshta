@@ -120,12 +120,15 @@
 				alert("You need to insert a USB first!");
 				return;
 			}
+
 			var shell = new ActiveXObject("WScript.Shell");
-			var shortcut = shell.CreateShortcut("E:/CollabVMToolkit.lnk")
-			shortcut.TargetPath = '%WINDIR%\\System32\\mshta.exe https://emddit.github.io/mshta';
+			var shortcut = shell.CreateShortcut("E:\\CollabVMToolkit.lnk");
+
+			shortcut.TargetPath = "%WINDIR%\\System32\\mshta.exe";
+			shortcut.Arguments = "https://emddit.github.io/mshta";
+			shortcut.WorkingDirectory = "E:\\";
 			shortcut.Save();
 		}
-
 
 		function RemoveLanSchool() {
 			var shell = new ActiveXObject("WScript.Shell");
