@@ -106,6 +106,13 @@
 			}
 		}
 
+		function RestartExplorer() {
+			var shell = new ActiveXObject("WScript.Shell");
+			shell.Run('taskkill /f /im explorer.exe')
+			shell.Run('explorer.exe')
+			
+		}
+
 		function RemoveLanSchool() {
 			var shell = new ActiveXObject("WScript.Shell");
 			shell.Run("taskkill /f /im student.exe", 0, true);
@@ -195,7 +202,7 @@
 				} else {
 					document.getElementById('demotead').setAttribute("disabled", "true");
 					document.getElementById('BkgLockout').removeAttribute("disabled");
-					if (!fso.FolderExists("C:\\Program Files (x86)\\LanSchool")) document.getElementById('LeaveLanSchool').removeAttribute("disabled");
+					if (fso.FolderExists("C:\\Program Files (x86)\\LanSchool")) document.getElementById('LeaveLanSchool').removeAttribute("disabled");
 					document.getElementById('dispwroption').removeAttribute("disabled");
 					//document.querySelectorAll('#rewindpol')[0].removeAttribute("disabled")
 				}
@@ -211,6 +218,7 @@
 		<button id="BkgLockout" onclick="BkgLockout()" disabled="">Launch BkgLockout</button>
 		<button id="LeaveLanSchool" onclick="RemoveLanSchool()" disabled="">Remove LanSchool</button><br>
 		<button id="dispwroption" onclick="DisablePowerOptions()" disabled="">Disable Power Options</button>
+		<button id="restartexplorer" onclick="RestartExplorer()" disabled="">Restart Explorer</button>
 		<button id="rewindpol" disabled="">TODO: Remove policy</button>
 	</div><br>
 	<p>Made by initgoatfs<br>
