@@ -77,7 +77,7 @@
 				if (item.PartOfDomain) {
 					alert("You are in a domain! Click Demote from windows Domain!");
 				} else {
-					document.querySelectorAll('#demotead')[0].remove()
+					document.querySelectorAll('#demotead')[0].setAttribute("disabled", "true")
 					document.querySelectorAll('#BkgLockout')[0].removeAttribute("disabled")
 					document.querySelectorAll('#LeaveLanSchool')[0].removeAttribute("disabled")
 					document.querySelectorAll('#dispwroption')[0].removeAttribute("disabled")
