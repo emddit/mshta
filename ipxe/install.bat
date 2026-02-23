@@ -1,4 +1,3 @@
 @echo off
-wpeinit
-echo We did it!
+echo *** HELLO *** > X:\log.txt
 pause
