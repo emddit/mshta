@@ -1,1 +1,2 @@
-msg * TODO
+echo We did it!
+pause
