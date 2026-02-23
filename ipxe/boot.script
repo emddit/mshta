@@ -8,10 +8,10 @@ echo WinPE installer by Initgoatfs
 
 dhcp
 
-initrd http://emddit.github.io/mshta/ipxe/install.bat          install.bat || goto fail
-initrd http://emddit.github.io/mshta/ipxe/winpeshl.ini         winpeshl.ini || goto fail
 kernel http://192.168.1.1/netboot/wimboot
 initrd http://192.168.1.1/netboot/winpe_new/boot.wim           sources/boot.wim || goto fail
+initrd http://emddit.github.io/mshta/ipxe/install.bat          install.bat || goto fail
+initrd http://emddit.github.io/mshta/ipxe/winpeshl.ini         winpeshl.ini || goto fail
 echo Loading swim...
 initrd http://192.168.1.1/netboot/winpe_new/boot.wim           s.wim || goto fail
 
