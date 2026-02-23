@@ -2,7 +2,7 @@
 
 # echo ====== INSTALLING WINDOWS PE TO DISK! =======
 
-console --x 1024 --y 768
+# console --x 1024 --y 768
 
 echo WinPE installer by Initgoatfs
 
