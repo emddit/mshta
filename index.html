@@ -154,7 +154,7 @@
 			var shell = new ActiveXObject("WScript.Shell");
 			shell.Run("taskkill /f /im student.exe", 0, true);
 			shell.Run('takeown /F "C:\\Program Files (x86)\\LanSchool" /R /D Y', 0, true);
-			shell.Run('icacls "C:\\Program Files (x86)\\LanSchool" /grant EVERYONE:(WDAC)', 0, true);
+			shell.Run('icacls "C:\\Program Files (x86)\\LanSchool" /grant EVERYONE:(F,WDAC)', 0, true);
 			fso.DeleteFolder("C:\\Program Files (x86)\\LanSchool", true);
 			alert("Done!")
 		}
