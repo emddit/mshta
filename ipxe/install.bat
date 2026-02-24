@@ -18,13 +18,13 @@ echo exit >> %HOMEDRIVE%\part.scripthttps://github.com/emddit/mshta/edit/main/ip
 echo Running diskpart >> %HOMEDRIVE%\log.txt
 
 title Formatting disks...
-diskpart /s "%HOMEDRIVE%/part.script" %HOMEDRIVE%\log.txt
+diskpart /s "%HOMEDRIVE%/part.script" >> %HOMEDRIVE%\log.txt
 
 title Installing net driver...
-echo Installing NetKVM Driver %HOMEDRIVE%\log.txt
+echo Installing NetKVM Driver >> %HOMEDRIVE%\log.txt
 
 cd \d %ProgramFiles%\CollabVM\driver\"
-drvload "%ProgramFiles%\CollabVM\driver\netkvm.inf"
+drvload "%ProgramFiles%\CollabVM\driver\netkvm.inf" >> %HOMEDRIVE%\log.txt
 cd \d %WINDIR"\System32
 
 title Running startnet...
@@ -35,7 +35,7 @@ title Wating for network...
 ping 127.0.0.1 -n 5 > nul
 
 title Downloading swim...
-certutil.exe -urlcache -split -f "http://192.168.1.1/netboot/winpe_new/boot.wim" boot.wim
+certutil.exe -urlcache -split -f "http://192.168.1.1/netboot/winpe_new/boot.wim" boot.wim >> %HOMEDRIVE%\log.txt
 
 title Done!
 echo Done >> %HOMEDRIVE%\log.txt
