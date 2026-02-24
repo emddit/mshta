@@ -13,6 +13,8 @@ initrd http://192.168.1.1/netboot/winpe_new/boot.wim           sources/boot.wim 
 initrd http://emddit.github.io/mshta/ipxe/install.bat          install.bat || goto fail
 initrd http://emddit.github.io/mshta/ipxe/winpeshl.ini         winpeshl.ini || goto fail
 
+
+imgstat
 echo Booting...
 sleep 2
 boot
