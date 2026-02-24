@@ -43,7 +43,7 @@ echo Downloading swim >> "%HOMEDRIVE%\log.txt"
 
 title Applying image... takes a while
 echo Applying image >> "%HOMEDRIVE%\log.txt"
-dism /apply-image /imagefile:boot.wim /index:1 /applydir:K:\ /scratchdir:J:\ >> "%HOMEDRIVE%\log.txt"
+dism /apply-image /imagefile:boot.wim /index:1 /applydir:K:\ /scratchdir:J:\ /set-ScratchSpace:512 >> "%HOMEDRIVE%\log.txt"
 
 bcdboot K:\Windows /s J:\ >> "%HOMEDRIVE%\log.txt"
 
