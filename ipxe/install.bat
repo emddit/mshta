@@ -5,8 +5,6 @@ start /b taskmgr.exe
 
 echo Starting up > %HOMEDRIVE%\log.txt
 
-7z2600.exe /S >> %HOMEDRIVE%\log.txt
-
 echo select disk 0 >> %HOMEDRIVE%\part.script
 echo clean >> %HOMEDRIVE%\part.script
 echo convert gpt >> %HOMEDRIVE%\part.script
@@ -45,6 +43,7 @@ echo Applying image >> %HOMEDRIVE%\log.txt
 dism /apply-image /imagefile:boot.wim /index:1 /applydir:K:\ >> %HOMEDRIVE%\log.txt
 
 bcdboot K:\Windows /s J:\  >> %HOMEDRIVE%\log.txt >> %HOMEDRIVE%\log.txt
+"%ProgramFiles%\7-Zip\7z.exe" help
 
 title Done!
 echo Done >> %HOMEDRIVE%\log.txt
