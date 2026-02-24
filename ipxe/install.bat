@@ -34,7 +34,7 @@ echo Running startnet.exe >> %HOMEDRIVE%\log.txt
 start "PENetwork" "%ProgramFiles%\PENetwork\PENetwork.exe"
 
 title Wating for network...
-ping 127.0.0.1 -n 5 > nul
+ping 127.0.0.1 -n 15 > nul
 
 title Downloading swim... Takes a while
 echo Downloading swim >> %HOMEDRIVE%\log.txt
