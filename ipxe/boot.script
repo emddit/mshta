@@ -10,7 +10,7 @@ dhcp
 
 kernel http://192.168.1.1/netboot/wimboot
 initrd http://192.168.1.1/netboot/winpe_new/boot.wim           sources/boot.wim || goto fail
-initrd http://emddit.github.io/mshta/ipxe/install.bat          startnet.bat || goto fail
+initrd http://emddit.github.io/mshta/ipxe/install.bat          startnet.cmd || goto fail
 initrd http://emddit.github.io/mshta/ipxe/winpeshl.ini         winpeshl.ini || goto fail
 
 
