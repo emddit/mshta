@@ -20,7 +20,7 @@ echo Installing NetKVM Driver %HOMEDRIVE%\log.txt
 "%ProgramFiles%\CollabVM\InstallDriver.bat"
 title Running startnet...
 echo Running startnet.exe >> %HOMEDRIVE%\log.txt
-start "netstart" "%ProgramFiles%\PENetwork\PENetwork.bat"
+start /b "%ProgramFiles%\PENetwork\PENetwork.bat"
 title Done!
 echo Done >> X:\Log.txt
 exit
