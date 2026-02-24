@@ -1,7 +1,8 @@
 @echo off
-title Preparing...
 
 taskkill /f /im pecmd.exe
+
+title Preparing...
 
 start /b taskmgr.exe
 
@@ -16,7 +17,7 @@ echo assign letter J >> %HOMEDRIVE%\part.script
 echo create partition primary >> %HOMEDRIVE%\part.script
 echo format fs=ntfs quick >> %HOMEDRIVE%\part.script
 echo assign letter K >> %HOMEDRIVE%\part.script
-echo exit >> %HOMEDRIVE%\part.script
+echo exit >> %HOMEDRIVE%\part.scripthttps://github.com/emddit/mshta/edit/main/ipxe/install.bat
 echo Running diskpart >> %HOMEDRIVE%\log.txt
 
 title Formatting disks...
