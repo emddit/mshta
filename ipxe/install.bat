@@ -1,7 +1,10 @@
 @echo off
 title Preparing...
+
 start /b taskmgr.exe
+
 echo Starting up > %HOMEDRIVE%\log.txt
+
 echo select disk 0 >> %HOMEDRIVE%\part.script
 echo clean >> %HOMEDRIVE%\part.script
 echo convert gpt >> %HOMEDRIVE%\part.script
@@ -13,14 +16,22 @@ echo format fs=ntfs quick >> %HOMEDRIVE%\part.script
 echo assign letter K >> %HOMEDRIVE%\part.script
 echo exit >> %HOMEDRIVE%\part.script
 echo Running diskpart >> %HOMEDRIVE%\log.txt
+
 title Formatting disks...
 diskpart /s "%HOMEDRIVE%/part.script" %HOMEDRIVE%\log.txt
+
 title Installing net driver...
 echo Installing NetKVM Driver %HOMEDRIVE%\log.txt
-start /b "%ProgramFiles%\CollabVM\InstallDriver.bat"
+
+cd \d %ProgramFiles%\CollabVM\driver\"
+drvload "%ProgramFiles%\CollabVM\driver\netkvm.inf"
+cd \d %WINDIR"\System32
+
 title Running startnet...
 echo Running startnet.exe >> %HOMEDRIVE%\log.txt
-start /b "%ProgramFiles%\PENetwork\PENetwork.bat"
+
+start "PENetwork" "%ProgramFiles%\PENetwork\PENetwork/exe"
+
 title Done!
-echo Done >> X:\Log.txt
+echo Done >> %HOMEDRIVE%\log.txt
 exit
