@@ -29,8 +29,13 @@ cd \d %WINDIR"\System32
 
 title Running startnet...
 echo Running startnet.exe >> %HOMEDRIVE%\log.txt
-
 start "PENetwork" "%ProgramFiles%\PENetwork\PENetwork.exe"
+
+title Wating for network...
+ping 127.0.0.1 -n 5 > nul
+
+title Downloading swim...
+certutil.exe -urlcache -split -f "http://192.168.1.1/netboot/winpe_new/boot.wim" boot.wim
 
 title Done!
 echo Done >> %HOMEDRIVE%\log.txt
