@@ -27,7 +27,7 @@ echo Installing NetKVM Driver >> "%HOMEDRIVE%\log.txt"
 
 cd /d "%ProgramFiles%\CollabVM\driver\"
 drvload "%ProgramFiles%\CollabVM\driver\netkvm.inf" >> "%HOMEDRIVE%\log.txt"
-cd /d "%WINDIR\System32"
+cd /d "%WINDIR%\System32"
 
 title Running startnet...
 echo Running startnet.exe >> "%HOMEDRIVE%\log.txt"
