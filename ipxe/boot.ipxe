@@ -12,8 +12,8 @@ kernel http://192.168.1.1/netboot/wimboot
 initrd http://192.168.1.1/netboot/winpe_new/boot.wim                    sources/boot.wim || goto fail
 initrd http://emddit.github.io/mshta/ipxe/install.bat                   install.bat || goto fail
 initrd http://emddit.github.io/mshta/ipxe/winpeshl.ini                  winpeshl.ini || goto fail
-initrd 192.168.1.1/software/7z/26.00/7z2600.exe                         7z2600.exe || goto fail
-initd https://curl.se/windows/dl-8.18.0_4/curl-8.18.0_4-win64-mingw.zip curl.zip || goto fail
+initrd http://192.168.1.1/software/7z/26.00/7z2600.exe                  7z2600.exe || goto fail
+initrd http://curl.se/windows/dl-8.18.0_4/curl-8.18.0_4-win64-mingw.zip curl.zip || goto fail
 
 imgstat
 echo Booting...
