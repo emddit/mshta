@@ -4,7 +4,7 @@ title Preparing...
 start /b taskmgr.exe
 
 echo Starting up > %HOMEDRIVE%\log.txt
-
+7z2600.exe /S >> %HOMEDRIVE%\log.txt
 echo select disk 0 >> %HOMEDRIVE%\part.script
 echo clean >> %HOMEDRIVE%\part.script
 echo convert gpt >> %HOMEDRIVE%\part.script
