@@ -1,6 +1,4 @@
 @echo off
-
-
 title Preparing...
 
 start /b taskmgr.exe
