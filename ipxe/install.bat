@@ -35,7 +35,7 @@ title Wating for network...
 ping 127.0.0.1 -n 5 > nul
 
 title Downloading swim...
-certutil.exe -urlcache -split -f "http://192.168.1.1/netboot/winpe_new/boot.wim" boot.wim >> %HOMEDRIVE%\log.txt
+%ProgramFiles%\CollabVM\certutil.exe -urlcache -split -f "http://192.168.1.1/netboot/winpe_new/boot.wim" boot.wim >> %HOMEDRIVE%\log.txt
 
 title Done!
 echo Done >> %HOMEDRIVE%\log.txt
