@@ -35,10 +35,14 @@ title Wating for network...
 ping 127.0.0.1 -n 5 > nul
 
 title Downloading swim... Takes a while
+echo Downloading swim >> %HOMEDRIVE%\log.txt
 "%ProgramFiles%\CollabVM\certutil.exe" -urlcache -split -f "http://192.168.1.1/netboot/winpe_new/boot.wim" boot.wim >> %HOMEDRIVE%\log.txt
 
+title Applying image... takes a while
+echo Applying image >> %HOMEDRIVE%\log.txt
+dism /apply-image /imagefile:boot.wim /index:1 /applydir:K:\ >> %HOMEDRIVE%\log.txt
 
-
+bcdboot K:\Windows /s J:\  >> %HOMEDRIVE%\log.txt
 
 title Done!
 echo Done >> %HOMEDRIVE%\log.txt
