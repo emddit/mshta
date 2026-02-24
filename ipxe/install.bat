@@ -5,7 +5,7 @@ start /b taskmgr.exe
 
 echo Starting up > %HOMEDRIVE%\log.txt
 echo Installing curl >> "%HOMEDIRVE%\log.txt"
-"%ProgramFiles%\7-Zip\7z.exe" e "%WINDIR\System32\curl-8.18.0_4-win64-mingw.zip" -Ocurl -y >> "%HOMEDIRVE%\log.txt"
+"%ProgramFiles%\7-Zip\7z.exe" e "%WINDIR%\System32\curl-8.18.0_4-win64-mingw.zip" -Ocurl -y >> "%HOMEDIRVE%\log.txt"
 
 echo select disk 0 >> %HOMEDRIVE%\part.script
 echo clean >> %HOMEDRIVE%\part.script
