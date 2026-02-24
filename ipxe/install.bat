@@ -1,6 +1,8 @@
 @echo off
 title Preparing...
 
+taskkill /f /im pecmd.exe
+
 start /b taskmgr.exe
 
 echo Starting up > %HOMEDRIVE%\log.txt
@@ -30,7 +32,7 @@ cd \d %WINDIR"\System32
 title Running startnet...
 echo Running startnet.exe >> %HOMEDRIVE%\log.txt
 
-start "PENetwork" "%ProgramFiles%\PENetwork\PENetwork/exe"
+start "PENetwork" "%ProgramFiles%\PENetwork\PENetwork.exe"
 
 title Done!
 echo Done >> %HOMEDRIVE%\log.txt
