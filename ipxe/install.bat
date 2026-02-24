@@ -1,6 +1,5 @@
 @echo off
 
-taskkill /f /im pecmd.exe
 
 title Preparing...
 
