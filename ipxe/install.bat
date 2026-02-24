@@ -1,3 +1,15 @@
 @echo off
-echo *** HELLO *** > X:\log.txt
+echo Starting up > X:\log.txt
+echo select disk 0 >> X:/part.script
+echo clean >> X:/part.script
+echo convert gpt >> X:/part.script
+echo create partiton efi size=500 >> X:/part.script
+echo format fs=fat32 quick >> X:/part.script
+echo assign letter J >> X:/part.script
+echo create partiton primary >> X:/part.script
+echo format fs=ntfs quick >> X:/part.script
+echo assign letter k >> X:/part.script
+quit >> X:/part.script
+echo Running diskpart >> X:\log.txt
+diskpart /s "X:/part.script"
 exit
