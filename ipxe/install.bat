@@ -15,9 +15,11 @@ echo Running diskpart >> X:\log.txt
 title Formatting disks...
 diskpart /s "X:/part.script" >> X:\log.txt
 title Installing net driver...
+echo Installing NetKVM Driver >> X:\log.txt
 "X:\Program Files\CollabVM\InstallDriver.bat" >> X:\Log.txt
 title Running startnet...
-start "X:\Program Files\PENetwork_x64\startnet.exe" >> X:\Log.txt
+echo Running startnet.exe >> X:\log.txt
+start "netstart" "X:\Program Files\PENetwork_x64\startnet.exe"
 title Done!
 echo Done >> X:\Log.txt
 exit
