@@ -50,6 +50,6 @@ bcdboot K:\Windows /s J:\ >> "%HOMEDRIVE%\log.txt"
 title Done!
 echo Done >> "%HOMEDRIVE%\log.txt"
 
-cp "%HOMEDRIVE%\log.txt" K:\install.log
+copy "%HOMEDRIVE%\log.txt" K:\install.log
 wpeutil reboot
 exit
